@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            LOGO
+        </div>
+        <div class="favourites">
+            favourites
+        </div>
+        <div class="allposts">
+            All Posts
+        </div>
+    </header>
+    <Section class="group">
+
+
+    </Section>
+    <footer class="pagination">
+
+        <button onclick=showAvatar() class="one">*</button>
+        <button onclick=showAvatar2() class="two">*</button>
+        <button onclick=showAvatar3() class="three">*</button>
+        <button onclick=showAvatar4() class="four">*</button>
+    </footer>
+    <script>
+        async function showAvatar2() {
+
+            document.querySelector(".group").innerHTML = "";
+            let response = await fetch('https://swapi.dev/api/vehicles/?page=2');
+            let user = await response.json();
+            console.log(user.results)
+            for (let i of user.results) {
+                let page2;
+                page2 = `<div class="card">
+        <span>Name:</span>${i.name}<br />
+        <span>model:</span>${i.model}<br />
+        <span>manufacturer:</span>${i.manufacturer}
+    </div>`
+                document.querySelector(".group").innerHTML += page2;
+            }
+        }
+
+        async function showAvatar3() {
+            document.querySelector(".group").innerHTML = "";
+            let response = await fetch('https://swapi.dev/api/vehicles/?page=3');
+            let user = await response.json();
+            console.log(user.results)
+            for (let i of user.results) {
+                let page3;
+                page3 = `<div class="card">
+    <span>Name:</span>${i.name}<br />
+    <span>model:</span>${i.model}<br />
+    <span>manufacturer:</span>${i.manufacturer}
+</div>`
+                document.querySelector(".group").innerHTML += page3;
+            }
+        }
+        document.querySelector(".one").addEventListener("click", showAvatar())
+
+        async function showAvatar4() {
+            document.querySelector(".group").innerHTML = "";
+            let response = await fetch('https://swapi.dev/api/vehicles/?page=4');
+            let user = await response.json();
+            console.log(user.results)
+            for (let i of user.results) {
+                let page4;
+                page4 = `<div class="card">
+<span>Name:</span>${i.name}<br />
+<span>model:</span>${i.model}<br />
+<span>manufacturer:</span>${i.manufacturer}
+</div>`
+                document.querySelector(".group").innerHTML += page4;
+            }
+        }
+
+    </script>
+    <script type="text/javascript" src="./app.js"></script>
+</body>
+
+</html>
